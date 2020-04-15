@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("includes/head.ejs") %>
+    <link rel="stylesheet" href="css/home.css" />
+  </head>
+  <body>
+    <main class="main">
+      <header class="nav-header">
+        <nav class="nav">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="/" class="nav__logo"
+                ><img src="images/logo.png" alt="Logo"
+              /></a>
+            </li>
+            <li class="nav__item">
+              <a href="/" class="nav__link <%= path === '/' ? 'active' : '' %>"
+                ><i class="fas fa-home"></i> Home</a
+              >
+            </li>
+            <li class="nav__item">
+              <a
+                href="/profile"
+                class="nav__link <%= path === '/profile' ? 'active' : '' %>"
+                ><i class="fas fa-user"></i> Profile</a
+              >
+            </li>
+            <li class="nav__item">
+              <a
+                href="/notifications"
+                class="nav__link <%= path === '/notifications' ? 'active' : '' %>"
+                ><i class="fas fa-bell"></i> Notifications</a
+              >
+            </li>
+            <li class="nav__item">
+              <form action="/logout" method="POST">
+                <button  class="nav__link"
+                ><i class="fas fa-sign-out-alt"></i> Log out</buton
+                >
+            </form>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <div class="home">Home</div>
+    </main>
+  </body>
+</html>

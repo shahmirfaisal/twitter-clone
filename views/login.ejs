@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./includes/head.ejs") %>
+    <link rel="stylesheet" href="css/signup.css" />
+  </head>
+  <body>
+    <main class="main-form">
+      <img src="images/logo.png" alt="Logo" class="logo" />
+      <h2 class="heading">Log in to Twitter</h2>
+
+      <form action="/login" method="POST" class="form">
+        <div class="form__control">
+          <input
+            autocomplete="off"
+            id="username-email"
+            type="text"
+            class="form__input"
+            name="username-email"
+            autofocus
+          />
+          <label for="username-email" class="form__label"
+            >Username or Email</label
+          >
+        </div>
+
+        <div class="form__control">
+          <input
+            id="password"
+            type="password"
+            class="form__input"
+            name="password"
+          />
+          <label for="password" class="form__label">Password</label>
+        </div>
+
+        <button class="form__btn">Log in</button>
+      </form>
+    </main>
+  </body>
+</html>

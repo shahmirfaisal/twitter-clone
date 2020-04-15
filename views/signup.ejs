@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./includes/head.ejs") %>
+    <link rel="stylesheet" href="css/signup.css" />
+  </head>
+  <body>
+    <main class="main-form">
+      <img src="images/logo.png" alt="Logo" class="logo" />
+      <h2 class="heading">Sign up to Twitter</h2>
+
+      <form action="/signup" method="POST" class="form">
+        <div class="form__control">
+          <input
+            autocomplete="off"
+            id="name"
+            type="text"
+            class="form__input"
+            name="name"
+            autofocus
+          />
+          <label for="name" class="form__label">Name</label>
+        </div>
+
+        <div class="form__control">
+          <input
+            autocomplete="off"
+            id="username"
+            type="text"
+            class="form__input"
+            name="username"
+          />
+          <label for="username" class="form__label">Username</label>
+        </div>
+
+        <div class="form__control">
+          <input
+            autocomplete="off"
+            id="email"
+            type="email"
+            class="form__input"
+            name="email"
+          />
+          <label for="email" class="form__label">Email</label>
+        </div>
+
+        <div class="form__control">
+          <input
+            id="password"
+            type="password"
+            class="form__input"
+            name="password"
+          />
+          <label for="password" class="form__label">Password</label>
+        </div>
+
+        <button class="form__btn">Sign up</button>
+      </form>
+    </main>
+  </body>
+</html>

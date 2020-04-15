@@ -1,7 +1,39 @@
+/********  
+RESETS
+*********/
 *,
 *::after,
 *::before {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+:root {
+  --primary-color: #1da1f2;
+  --text-color: #14171a;
+}
+body,
+input,
+textarea,
+button {
+  font-family: "Montserrat", sans-serif;
+}
+body {
+  margin-bottom: 3rem;
+}
+button,
+input {
+  outline: none;
+}
+button {
+  border: none;
+  cursor: pointer;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 31rem auto;
 }
