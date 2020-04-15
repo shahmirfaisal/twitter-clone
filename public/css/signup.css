@@ -60,3 +60,10 @@
 .form__btn:hover {
   background-color: #1a91da;
 }
+.form__error {
+  color: red;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-weight: 500;
+}

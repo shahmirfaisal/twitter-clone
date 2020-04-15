@@ -10,14 +10,19 @@
       <h2 class="heading">Log in to Twitter</h2>
 
       <form action="/login" method="POST" class="form">
+        <% if(error) { %>
+        <p class="form__error"><%= error %></p>
+        <% } %>
+
         <div class="form__control">
           <input
             autocomplete="off"
             id="username-email"
             type="text"
             class="form__input"
-            name="username-email"
+            name="username_email"
             autofocus
+            value="<%= oldInput.username_email %>"
           />
           <label for="username-email" class="form__label"
             >Username or Email</label

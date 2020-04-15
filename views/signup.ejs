@@ -10,6 +10,10 @@
       <h2 class="heading">Sign up to Twitter</h2>
 
       <form action="/signup" method="POST" class="form">
+        <% if(error) { %>
+        <p class="form__error"><%= error %></p>
+        <% } %>
+
         <div class="form__control">
           <input
             autocomplete="off"
@@ -18,6 +22,7 @@
             class="form__input"
             name="name"
             autofocus
+            value="<%= oldInput.name %>"
           />
           <label for="name" class="form__label">Name</label>
         </div>
@@ -29,6 +34,7 @@
             type="text"
             class="form__input"
             name="username"
+            value="<%= oldInput.username %>"
           />
           <label for="username" class="form__label">Username</label>
         </div>
@@ -40,6 +46,7 @@
             type="email"
             class="form__input"
             name="email"
+            value="<%= oldInput.email %>"
           />
           <label for="email" class="form__label">Email</label>
         </div>
