@@ -1,0 +1,39 @@
+.write-tweet {
+  padding: 1rem 2rem;
+  background-color: white;
+}
+.write-tweet__header {
+  display: flex;
+  align-items: flex-start;
+}
+.write-tweet__img {
+  width: 5rem;
+  margin-right: 1.5rem;
+}
+.write-tweet__img > img {
+  border-radius: 50%;
+  width: 100%;
+}
+.write-tweet__text {
+  resize: none;
+  -webkit-resize: none;
+  -moz-resize: none;
+  flex: 1;
+  padding: 1rem 0;
+  font-size: 1.7rem;
+  height: 10rem;
+  border: none;
+}
+.write-tweet__btn {
+  display: block;
+  margin-left: auto;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border-radius: 100px;
+}
+.write-tweet__btn:hover {
+  background-color: var(--btn-hover);
+}

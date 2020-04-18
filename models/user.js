@@ -1,4 +1,5 @@
 const getDb = require("../database/database").getDb;
+const mongodb = require("mongodb");
 
 var months = [
   "January",
@@ -54,6 +55,19 @@ module.exports = class User {
     const db = getDb();
     try {
       const user = await db.collection("users").find({ email }).next();
+      return user;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  static async findById(id) {
+    const db = getDb();
+    try {
+      const user = await db
+        .collection("users")
+        .find({ _id: new mongodb.ObjectID(id) })
+        .next();
       return user;
     } catch (err) {
       console.log(err);

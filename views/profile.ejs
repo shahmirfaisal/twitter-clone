@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("includes/head.ejs") %>
+    <link rel="stylesheet" href="/css/navbar.css" />
+    <link rel="stylesheet" href="/css/write-tweet.css" />
+    <link rel="stylesheet" href="/css/tweet.css" />
+    <link rel="stylesheet" href="/css/aside.css" />
+    <link rel="stylesheet" href="/css/profile.css" />
+    <script src="/js/tweet.js" defer></script>
+    <script src="/js/write-tweet.js" defer></script>
+  </head>
+  <body>
+    <main class="main">
+      <%- include("./includes/navbar.ejs") %>
+
+      <div class="profile">
+        <header class="section-header">
+          <h2 class="section-header__heading"><%= user.name %></h2>
+        </header>
+        <!--
+        <section class="tweet-container">
+          <% for(let tweet of tweets) { %> <%- include("includes/tweet.ejs", {
+          tweet }) %> <% } %>
+        </section>
+        -->
+        <header class="profile__header">
+          <div class="profile__img">
+            <img src="/<%= user.image %>" alt="Profile Image" />
+          </div>
+          <button class="profile__btn">Edit Profile</button>
+        </header>
+
+        <section class="profile__info">
+          <h3 class="profile__name"><%= user.name %></h3>
+          <h4 class="profile__username">@<%= user.username %></h4>
+          <div class="profile__more-info">
+            <p><i class="fas fa-info-circle"></i> Bio : <%= user.bio %></p>
+          </div>
+          <div class="profile__more-info">
+            <p><i class="fas fa-flag"></i> Country : <%= user.country %></p>
+            <p><i class="fas fa-link"></i> Website : <%= user.website %></p>
+          </div>
+          <div class="profile__more-info">
+            <p>
+              <i class="fas fa-calendar-week"></i> Joined : <%= user.joined %>
+            </p>
+          </div>
+        </section>
+
+        <div class="profile__write-tweet">
+          <%- include("includes/write-tweet.ejs") %>
+        </div>
+
+        <header class="profile__tweets-header">
+          <h3>
+            Tweets
+          </h3>
+        </header>
+
+        <section class="tweet-container">
+          <% for(let tweet of tweets) { %> <%- include("includes/tweet.ejs", {
+          tweet }) %> <% } %>
+        </section>
+      </div>
+
+      <%- include("includes/aside.ejs") %>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<div class="tweet">
+  <header class="tweet__header">
+    <a href="/profile/<%= tweet.user._id %>" class="tweet__profile-link">
+      <div class="tweet__img">
+        <img src="/<%= tweet.user.image %>" alt="Profile Image" />
+      </div>
+      <h3 class="tweet__name"><%= tweet.user.name %></h3>
+      <h4 class="tweet__username">@<%= tweet.user.username %></h4>
+    </a>
+  </header>
+
+  <p class="tweet__text">
+    <%= tweet.tweet %>
+  </p>
+
+  <div class="tweet__like">
+    <input id="tweet-id" type="hidden" value="<%= tweet._id %>" />
+    <input
+      type="hidden"
+      id="likes-array"
+      value="<%= JSON.stringify(tweet.likes) %>"
+    />
+    <input type="hidden" id="user-email" value="<%= currentUser.email %>" />
+    <button
+      class="tweet__like-icon <%= tweet.likes.includes(currentUser.email) ? 'tweet__like-icon--liked' : '' %>"
+    >
+      <i class="fas fa-heart"></i>
+    </button>
+
+    <p><span id="total-likes"><%= tweet.likes.length %></span> likes</p>
+  </div>
+
+  <div class="tweet__form">
+    <input id="tweet-id" type="hidden" value="<%= tweet._id %>" />
+    <input
+      type="hidden"
+      id="comments-array"
+      value="<%= JSON.stringify(tweet.comments) %>"
+    />
+    <input
+      type="text"
+      placeholder="Enter comment..."
+      name="comment"
+      id="comment-text"
+    />
+    <input type="hidden" id="user" value="<%= JSON.stringify(currentUser) %>" />
+    <button disabled>Tweet</button>
+  </div>
+
+  <p class="tweet__toggle-comments">show comments</p>
+
+  <ul class="comments" data-show="false">
+    <% if(tweet.comments.length === 0) { %>
+    <li class="tweet__no-comments">No Comments</li>
+    <% } else { %> <% for(let comment of tweet.comments) { %>
+    <li class="comment">
+      <header class="tweet__header">
+        <a href="/profile/<%= comment.user._id %>" class="tweet__profile-link">
+          <div class="tweet__img">
+            <img src="/<%= comment.user.image %>" alt="Profile Image" />
+          </div>
+          <h3 class="tweet__name"><%= comment.user.name %></h3>
+          <h4 class="tweet__username">@<%= comment.user.username %></h4>
+        </a>
+      </header>
+
+      <p class="tweet__text">
+        <%= comment.comment %>
+      </p>
+    </li>
+    <% } } %>
+  </ul>
+</div>

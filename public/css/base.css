@@ -14,6 +14,8 @@ html {
 :root {
   --primary-color: #1da1f2;
   --text-color: #14171a;
+  --border: 0.3px solid rgb(223, 223, 223);
+  --btn-hover: #1a90da;
 }
 body,
 input,
@@ -25,7 +27,8 @@ body {
   margin-bottom: 3rem;
 }
 button,
-input {
+input,
+textarea {
   outline: none;
 }
 button {
@@ -35,5 +38,14 @@ button {
 
 .main {
   display: grid;
-  grid-template-columns: 31rem auto;
+  grid-template-columns: 31rem 1fr 30rem;
+}
+
+.section-header {
+  padding: 1.5rem 2rem;
+  background-color: white;
+  border-bottom: var(--border);
+}
+.section-header__heading {
+  font-size: 2.1rem;
 }

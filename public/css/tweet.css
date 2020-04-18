@@ -1,0 +1,99 @@
+.tweet {
+  background-color: white;
+  padding: 2rem 2rem;
+  border-bottom: var(--border);
+  font-size: 1rem;
+}
+.tweet__profile-link {
+  text-decoration: none;
+  color: black;
+  display: flex;
+  align-items: center;
+}
+.tweet__img {
+  width: 5em;
+}
+.tweet__img > img {
+  width: 100%;
+  border-radius: 50%;
+}
+.tweet__name {
+  font-size: 1.7em;
+  margin-left: 1.5rem;
+}
+.tweet__username {
+  font-size: 1.5em;
+  opacity: 0.6;
+  font-weight: 600;
+  margin-left: 1rem;
+}
+.tweet__text {
+  font-size: 1.6em;
+  margin-top: 1rem;
+  line-height: 1.5em;
+}
+.tweet__like {
+  display: flex;
+  margin-top: 1rem;
+}
+.tweet__like-icon {
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: rgb(197, 197, 197);
+  background-color: transparent;
+}
+.tweet__like-icon--liked {
+  color: rgb(255, 59, 92);
+}
+.tweet__like > p {
+  font-size: 1.5rem;
+  font-weight: 500;
+  opacity: 0.9;
+  margin-left: 1rem;
+}
+.tweet__toggle-comments {
+  display: inline-block;
+  text-decoration: underline;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-top: 1rem;
+  cursor: pointer;
+}
+.tweet__toggle-comments:hover {
+  color: black;
+}
+.tweet__form {
+  display: flex;
+  margin-top: 1.5rem;
+}
+.tweet__form > input {
+  flex: 1;
+  border-radius: 100px 0 0 100px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 1rem 1.5rem;
+  font-size: 1.5rem;
+}
+.tweet__form > button {
+  color: white;
+  background-color: var(--primary-color);
+  font-size: 1.6rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0 100px 100px 0;
+}
+.tweet__form > button:hover {
+  background-color: var(--btn-hover);
+}
+.tweet__no-comments {
+  font-size: 1.5rem;
+}
+
+.comments {
+  list-style-type: none;
+  margin-top: 2rem;
+  display: none;
+}
+.comment {
+  font-size: 0.85rem;
+  border-top: var(--border);
+  padding: 1rem 2rem;
+}

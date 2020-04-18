@@ -58,7 +58,7 @@
   border-radius: 10rem;
 }
 .form__btn:hover {
-  background-color: #1a91da;
+  background-color: var(--btn-hover);
 }
 .form__error {
   color: red;

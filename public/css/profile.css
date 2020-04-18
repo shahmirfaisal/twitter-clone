@@ -1,0 +1,75 @@
+.profile {
+  background-color: #e6ecf0;
+}
+.profile__header {
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0 2rem;
+}
+.profile__img {
+  width: 15rem;
+  margin-top: 1rem;
+}
+.profile__img > img {
+  width: 100%;
+  border: 3px solid white;
+  border-radius: 50%;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+}
+.profile__btn {
+  background-color: transparent;
+  color: var(--primary-color);
+  font-size: 1.7rem;
+  padding: 1rem 2rem;
+  border-radius: 100px;
+  border: 1.5px solid var(--primary-color);
+  font-weight: 600;
+  margin-top: 2rem;
+}
+.profile__btn:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.profile__info {
+  background-color: #fff;
+  padding: 1rem 2rem 2rem 2rem;
+}
+.profile__name {
+  font-size: 2rem;
+}
+.profile__username {
+  opacity: 0.7;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+.profile__more-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.profile__more-info > p {
+  font-size: 1.5rem;
+  color: rgb(77, 77, 77);
+  font-weight: 500;
+  margin-top: 1rem;
+}
+
+.profile__write-tweet {
+  border-top: var(--border);
+  margin-bottom: 1.5rem;
+}
+
+.profile__tweets-header {
+  border-bottom: var(--border);
+  background-color: #fff;
+  padding: 1.5rem 2rem;
+}
+.profile__tweets-header > h3 {
+  font-size: 2rem;
+  font-weight: 600;
+}

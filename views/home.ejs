@@ -3,47 +3,31 @@
   <head>
     <%- include("includes/head.ejs") %>
     <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/write-tweet.css" />
+    <link rel="stylesheet" href="css/tweet.css" />
+    <link rel="stylesheet" href="css/aside.css" />
+    <script src="js/tweet.js" defer></script>
+    <script src="js/write-tweet.js" defer></script>
   </head>
   <body>
     <main class="main">
-      <header class="nav-header">
-        <nav class="nav">
-          <ul class="nav__list">
-            <li class="nav__item">
-              <a href="/" class="nav__logo"
-                ><img src="images/logo.png" alt="Logo"
-              /></a>
-            </li>
-            <li class="nav__item">
-              <a href="/" class="nav__link <%= path === '/' ? 'active' : '' %>"
-                ><i class="fas fa-home"></i> Home</a
-              >
-            </li>
-            <li class="nav__item">
-              <a
-                href="/profile"
-                class="nav__link <%= path === '/profile' ? 'active' : '' %>"
-                ><i class="fas fa-user"></i> Profile</a
-              >
-            </li>
-            <li class="nav__item">
-              <a
-                href="/notifications"
-                class="nav__link <%= path === '/notifications' ? 'active' : '' %>"
-                ><i class="fas fa-bell"></i> Notifications</a
-              >
-            </li>
-            <li class="nav__item">
-              <form action="/logout" method="POST">
-                <button  class="nav__link"
-                ><i class="fas fa-sign-out-alt"></i> Log out</buton
-                >
-            </form>
-            </li>
-          </ul>
-        </nav>
-      </header>
-      <div class="home">Home</div>
+      <%- include("./includes/navbar.ejs") %>
+
+      <div class="home">
+        <header class="section-header">
+          <h2 class="section-header__heading">Home</h2>
+        </header>
+
+        <%- include("includes/write-tweet.ejs") %>
+
+        <section class="tweet-container">
+          <% for(let tweet of tweets) { %> <%- include("includes/tweet.ejs", {
+          tweet }) %> <% } %>
+        </section>
+      </div>
+
+      <%- include("includes/aside.ejs") %>
     </main>
   </body>
 </html>

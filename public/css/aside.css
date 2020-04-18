@@ -1,0 +1,8 @@
+.aside {
+}
+.aside__content {
+  position: fixed;
+  height: 100vh;
+  width: 30rem;
+  border-left: var(--border);
+}

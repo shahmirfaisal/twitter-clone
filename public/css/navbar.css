@@ -1,0 +1,42 @@
+.nav {
+  position: fixed;
+  height: 100vh;
+  width: 31rem;
+  display: flex;
+  justify-content: center;
+  border-right: var(--border);
+}
+.nav__logo {
+  display: inline-block;
+  width: 3.4rem;
+  margin: 0 0 1rem 1rem;
+}
+.nav__logo > img {
+  width: 100%;
+}
+.nav__list {
+  list-style-type: none;
+  margin-top: 2rem;
+}
+.nav__link {
+  text-decoration: none;
+  color: black;
+  font-size: 1.8rem;
+  font-weight: 600;
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 1.3rem 3rem 1.3rem 1.3rem;
+  border-radius: 100px;
+  background-color: transparent;
+}
+.nav__link > i {
+  margin-right: 1rem;
+  font-size: 1.3em;
+}
+.nav__link:hover {
+  color: var(--primary-color);
+  background-color: #e8f5fe;
+}
+.nav__link.active {
+  color: var(--primary-color);
+}
