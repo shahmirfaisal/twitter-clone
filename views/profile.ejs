@@ -18,17 +18,17 @@
         <header class="section-header">
           <h2 class="section-header__heading"><%= user.name %></h2>
         </header>
-        <!--
-        <section class="tweet-container">
-          <% for(let tweet of tweets) { %> <%- include("includes/tweet.ejs", {
-          tweet }) %> <% } %>
-        </section>
-        -->
+
         <header class="profile__header">
           <div class="profile__img">
             <img src="/<%= user.image %>" alt="Profile Image" />
           </div>
-          <button class="profile__btn">Edit Profile</button>
+          <a
+            href="/edit-profile"
+            class="profile__btn <%= currentUser.email === user.email ? '' : 'hidden' %>"
+          >
+            Edit Profile
+          </a>
         </header>
 
         <section class="profile__info">
@@ -48,7 +48,9 @@
           </div>
         </section>
 
-        <div class="profile__write-tweet">
+        <div
+          class="profile__write-tweet <%= currentUser.email === user.email ? '' : 'hidden' %>"
+        >
           <%- include("includes/write-tweet.ejs") %>
         </div>
 

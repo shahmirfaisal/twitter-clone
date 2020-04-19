@@ -73,4 +73,16 @@ module.exports = class User {
       console.log(err);
     }
   }
+
+  static async updateProfile(id, profile) {
+    const db = getDb();
+    try {
+      const res = await db
+        .collection("users")
+        .updateOne({ _id: new mongodb.ObjectID(id) }, { $set: profile });
+      return res;
+    } catch (err) {
+      console.log(err);
+    }
+  }
 };

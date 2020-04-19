@@ -27,10 +27,14 @@
   border: 1.5px solid var(--primary-color);
   font-weight: 600;
   margin-top: 2rem;
+  text-decoration: none;
 }
 .profile__btn:hover {
   background-color: var(--primary-color);
   color: white;
+}
+.profile__btn.hidden {
+  display: none;
 }
 
 .profile__info {
@@ -63,9 +67,13 @@
   border-top: var(--border);
   margin-bottom: 1.5rem;
 }
+.profile__write-tweet.hidden {
+  display: none;
+}
 
 .profile__tweets-header {
   border-bottom: var(--border);
+  border-top: var(--border);
   background-color: #fff;
   padding: 1.5rem 2rem;
 }

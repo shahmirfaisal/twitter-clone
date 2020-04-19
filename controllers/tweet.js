@@ -39,11 +39,11 @@ exports.postComment = async (req, res, next) => {
 };
 
 exports.getProfile = async (req, res, next) => {
+  if (!req.session.isLogin) return res.redirect("/signup");
+
   const { id } = req.params;
-  console.log(id);
   const tweets = await Tweet.fetchByUserId(id);
   const user = await User.findById(id);
-  console.log(user, tweets);
 
   await res.render("profile", {
     pageTitle: user.name + " - Twitter",

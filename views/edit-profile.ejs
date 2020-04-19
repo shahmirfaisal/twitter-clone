@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("includes/head.ejs") %>
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/aside.css" />
+    <link rel="stylesheet" href="css/edit-profile.css" />
+    <script src="js/edit-profile.js" defer></script>
+  </head>
+  <body>
+    <main class="main">
+      <%- include("./includes/navbar.ejs") %>
+
+      <div class="edit-profile">
+        <header class="section-header">
+          <h2 class="section-header__heading">Edit Profile</h2>
+        </header>
+
+        <form
+          action="/edit-profile"
+          method="POST"
+          class="form"
+          enctype="multipart/form-data"
+        >
+          <div class="form__grid">
+            <div class="form__control">
+              <label for="name" class="form__label">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="form__input"
+                value="<%= currentUser.name %>"
+              />
+            </div>
+
+            <div class="form__control">
+              <label for="bio" class="form__label">Bio</label>
+              <input
+                type="text"
+                id="bio"
+                name="bio"
+                class="form__input"
+                value="<%= currentUser.bio %>"
+              />
+            </div>
+
+            <div class="form__control">
+              <label for="country" class="form__label">Country</label>
+              <input
+                type="text"
+                id="country"
+                name="country"
+                class="form__input"
+                value="<%= currentUser.country %>"
+              />
+            </div>
+
+            <div class="form__control">
+              <label for="website" class="form__label">Website</label>
+              <input
+                type="text"
+                id="website"
+                name="website"
+                class="form__input"
+                value="<%= currentUser.website %>"
+              />
+            </div>
+
+            <div class="form__control">
+              <label for="image" class="form__btn">Choose an image</label>
+              <input
+                id="image"
+                type="file"
+                name="image"
+                class="form__input form__input--file"
+              />
+              <div class="form__img">
+                <img src="<%= currentUser.image %>" alt="Profile Image" />
+              </div>
+            </div>
+          </div>
+
+          <input
+            type="hidden"
+            class="form__current-img"
+            value="<%= currentUser.image %>"
+          />
+
+          <button class="form__btn form__btn--submit">Edit</button>
+        </form>
+      </div>
+
+      <%- include("includes/aside.ejs") %>
+    </main>
+  </body>
+</html>

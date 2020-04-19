@@ -22,7 +22,7 @@ const sessionStore = new MongoSession({
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "images");
+    cb(null, "multer-images");
   },
   filename: (req, file, cb) => {
     cb(null, Date.now() + "-" + file.originalname);
@@ -31,7 +31,7 @@ const storage = multer.diskStorage({
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use("/images", express.static(path.join(__dirname, "images")));
+app.use("/multer-images", express.static(path.join(__dirname, "images")));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(multer({ storage }).single("image"));
 app.use(

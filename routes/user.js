@@ -15,4 +15,8 @@ router.post("/login", loginValidator, userController.postLogin);
 
 router.post("/logout", userController.postLogout);
 
+router.get("/edit-profile", userController.getEditProfile);
+
+router.post("/edit-profile", userController.postEditProfile);
+
 module.exports = router;

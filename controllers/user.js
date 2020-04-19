@@ -89,3 +89,31 @@ exports.postLogout = (req, res, next) => {
     res.redirect("/signup");
   });
 };
+
+exports.getEditProfile = (req, res, next) => {
+  const { user, isLogin } = req.session;
+
+  if (!isLogin) return res.redirect("/signup");
+
+  res.render("edit-profile", {
+    pageTitle: "Edit Profile - Twitter",
+    path: "/edit-profile",
+    currentUser: user,
+  });
+};
+
+exports.postEditProfile = async (req, res, next) => {
+  const updatedProfile = {};
+
+  for (let key in req.body) {
+    if (req.body[key].trim().length > 0) {
+      updatedProfile[key] = req.body[key];
+    }
+  }
+  if (req.file) updatedProfile.image = req.file.path;
+
+  const result = await User.updateProfile(req.session.user._id, updatedProfile);
+  req.session.user = await User.findById(req.session.user._id);
+
+  res.redirect("/profile/" + req.session.user._id);
+};
