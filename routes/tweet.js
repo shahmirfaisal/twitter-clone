@@ -13,4 +13,6 @@ router.post("/comment", tweetController.postComment);
 
 router.get("/profile/:id", tweetController.getProfile);
 
+router.get("/tweet/:id", tweetController.getTweet);
+
 module.exports = router;

@@ -23,7 +23,7 @@ module.exports = class Tweet {
       const res = await db.collection("tweets").insertOne(this);
       return res.ops[0];
     } catch (err) {
-      console.log(err);
+      return Promise.reject(err);
     }
   }
 
@@ -33,7 +33,7 @@ module.exports = class Tweet {
       const tweets = await db.collection("tweets").find().toArray();
       return tweets;
     } catch (err) {
-      console.log(err);
+      return Promise.reject(err);
     }
   }
 
@@ -44,10 +44,9 @@ module.exports = class Tweet {
         .collection("tweets")
         .find({ "user._id": new mongodb.ObjectID(userId) })
         .toArray();
-      console.log("Tweets", tweets);
       return tweets;
     } catch (err) {
-      console.log(err);
+      return Promise.reject(err);
     }
   }
 
@@ -60,7 +59,7 @@ module.exports = class Tweet {
         .next();
       return tweet;
     } catch (err) {
-      console.log(err);
+      return Promise.reject(err);
     }
   }
 
@@ -72,7 +71,7 @@ module.exports = class Tweet {
         .updateOne({ _id: new mongodb.ObjectID(id) }, { $set: { likes } });
       return res;
     } catch (err) {
-      console.log(err);
+      return Promise.reject(err);
     }
   }
 
@@ -84,7 +83,34 @@ module.exports = class Tweet {
         .updateOne({ _id: new mongodb.ObjectID(id) }, { $set: { comments } });
       return res;
     } catch (err) {
-      console.log(err);
+      return Promise.reject(err);
+    }
+  }
+
+  static async updateTweetsUsers(userId, user) {
+    const db = getDb();
+    try {
+      const comments = await db.collection("tweets").updateMany(
+        { "comments.user.email": user.email },
+        {
+          $set: {
+            "comments.$[].user": user,
+          },
+        }
+      );
+
+      const res = await db.collection("tweets").updateMany(
+        { "user._id": new mongodb.ObjectID(userId) },
+        {
+          $set: {
+            user,
+          },
+        }
+      );
+
+      return res;
+    } catch (err) {
+      return Promise.reject(err);
     }
   }
 };

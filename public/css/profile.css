@@ -6,23 +6,27 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 0 2rem;
+  padding: 0 var(--padding);
 }
 .profile__img {
   width: 15rem;
+  height: 15rem;
   margin-top: 1rem;
 }
 .profile__img > img {
   width: 100%;
-  border: 3px solid white;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  border: 5px solid white;
   border-radius: 50%;
-  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.2);
 }
 .profile__btn {
   background-color: transparent;
   color: var(--primary-color);
   font-size: 1.7rem;
-  padding: 1rem 2rem;
+  padding: 1rem var(--padding);
   border-radius: 100px;
   border: 1.5px solid var(--primary-color);
   font-weight: 600;
@@ -39,7 +43,7 @@
 
 .profile__info {
   background-color: #fff;
-  padding: 1rem 2rem 2rem 2rem;
+  padding: 1rem var(--padding) 2rem var(--padding);
 }
 .profile__name {
   font-size: 2rem;
@@ -75,9 +79,23 @@
   border-bottom: var(--border);
   border-top: var(--border);
   background-color: #fff;
-  padding: 1.5rem 2rem;
+  padding: 1.5rem var(--padding);
 }
 .profile__tweets-header > h3 {
   font-size: 2rem;
   font-weight: 600;
+}
+
+@media (max-width: 780px) {
+  .profile__btn {
+    font-size: 2rem;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1.3rem 1.5rem;
+    border-radius: 50%;
+    box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.2);
+  }
+  .profile__btn > span {
+    display: none;
+  }
 }

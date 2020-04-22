@@ -8,6 +8,7 @@ const MongoSession = require("connect-mongodb-session")(session);
 const userRouter = require("./routes/user");
 const tweetRouter = require("./routes/tweet");
 const notificationRouter = require("./routes/notification");
+const errorController = require("./controllers/error");
 
 const app = express();
 
@@ -22,7 +23,7 @@ const sessionStore = new MongoSession({
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "multer-images");
+    cb(null, "profileImages");
   },
   filename: (req, file, cb) => {
     cb(null, Date.now() + "-" + file.originalname);
@@ -31,8 +32,11 @@ const storage = multer.diskStorage({
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use("/multer-images", express.static(path.join(__dirname, "images")));
 app.use(express.static(path.join(__dirname, "public")));
+app.use(
+  "/profileImages",
+  express.static(path.join(__dirname, "profileImages"))
+);
 app.use(multer({ storage }).single("image"));
 app.use(
   session({
@@ -46,6 +50,10 @@ app.use(
 app.use(userRouter);
 app.use(tweetRouter);
 app.use(notificationRouter);
+
+app.use(errorController.get404);
+
+app.use(errorController.get500);
 
 mongoConnect(() => {
   app.listen(3000);

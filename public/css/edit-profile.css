@@ -2,18 +2,24 @@
 }
 
 .form {
-  margin: 3rem 2rem;
+  margin: 3rem var(--padding);
 }
 .form__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-content: space-between;
+  grid-gap: 2rem;
+}
+@media (max-width: 630px) {
+  .form__grid {
+    grid-template-columns: 1fr;
+  }
 }
 .form__control {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-bottom: 2rem;
+  /* margin-bottom: 2rem; */
 }
 .form__label {
   font-size: 1.5rem;
@@ -26,6 +32,7 @@
   border-radius: 3px;
   box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(216, 216, 216, 0.993);
+  width: 100%;
 }
 .form__input--file {
   display: none;
@@ -44,6 +51,7 @@
   box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.1);
 }
 .form__btn {
+  display: inline-block;
   background-color: var(--primary-color);
   font-size: 1.5rem;
   font-weight: 500;
@@ -51,11 +59,17 @@
   color: white;
   border-radius: 3px;
   cursor: pointer;
+  width: 100%;
+  text-align: center;
 }
 .form__btn--submit {
   display: block;
   font-size: 1.8rem;
-  margin: 2rem auto;
   width: 300px;
-  max-width: 100%;
+  margin: 4rem auto;
+}
+@media (max-width: 500px) {
+  .form__btn--submit {
+    width: 100%;
+  }
 }

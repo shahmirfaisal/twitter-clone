@@ -4,6 +4,12 @@
   margin: 2.5rem auto 0 auto;
   /* border: 1px solid black; */
 }
+.main-form__link {
+  display: block;
+  text-align: center;
+  font-size: 1.7rem;
+  margin-top: 2rem;
+}
 
 .logo {
   width: 5rem;

@@ -1,5 +1,5 @@
 .write-tweet {
-  padding: 1rem 2rem;
+  padding: 1rem var(--padding);
   background-color: white;
 }
 .write-tweet__header {
@@ -8,11 +8,15 @@
 }
 .write-tweet__img {
   width: 5rem;
+  height: 5rem;
   margin-right: 1.5rem;
 }
 .write-tweet__img > img {
   border-radius: 50%;
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
 }
 .write-tweet__text {
   resize: none;

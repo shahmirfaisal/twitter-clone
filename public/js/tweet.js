@@ -15,8 +15,6 @@ function toggleCommentHandler({ target: elem }) {
     comments.style.display = "block";
     elem.innerHTML = "hide comments";
   }
-
-  console.log(comments);
 }
 
 const likeIcons = document.querySelectorAll(".tweet__like-icon");
@@ -30,6 +28,7 @@ async function submitLike() {
   const tweetId = elem.parentNode.querySelector("#tweet-id").value;
   const userEmail = elem.parentNode.querySelector("#user-email").value;
   const totalLikes = elem.parentNode.querySelector("#total-likes");
+  const email = elem.parentNode.querySelector("#email").value;
 
   if (elem.classList.contains("tweet__like-icon--liked")) {
     const index = likesArray.indexOf(userEmail);
@@ -49,6 +48,7 @@ async function submitLike() {
     body: JSON.stringify({
       id: tweetId,
       likes: likesArray,
+      email,
     }),
     headers: {
       "Content-Type": "application/json",
@@ -60,29 +60,35 @@ const addCommentBtns = document.querySelectorAll(".tweet__form > button");
 addCommentBtns.forEach((addCommentBtn) =>
   addCommentBtn.addEventListener("click", addComment)
 );
+const spinner = document.querySelector("#spinner");
 
 async function addComment() {
   const tweetId = this.parentNode.querySelector("#tweet-id").value;
   const commentsArray = JSON.parse(
     this.parentNode.querySelector("#comments-array").value
   );
-  const commentText = this.parentNode.querySelector("#comment-text").value;
+  const commentText = this.parentNode.querySelector("#comment-text");
   let user = JSON.parse(this.parentNode.querySelector("#user").value);
+  const email = this.parentNode.querySelector("#email").value;
 
   const comment = {
     user,
-    comment: commentText,
+    comment: commentText.value,
   };
   commentsArray.push(comment);
 
+  spinner.style.display = "flex";
+
   const res = await fetch("/comment", {
     method: "POST",
-    body: JSON.stringify({ id: tweetId, comments: commentsArray }),
+    body: JSON.stringify({ id: tweetId, comments: commentsArray, email }),
     headers: {
       "Content-Type": "application/json",
     },
   });
-  const data = await res.json();
+
+  commentText.value = "";
+
   const li = document.createElement("li");
   li.className = "comment";
   li.innerHTML = `
@@ -102,22 +108,22 @@ async function addComment() {
 `;
   const ul = this.parentNode.parentNode.querySelector(".comments");
   ul.appendChild(li);
-  ul.removeChild(ul.querySelector(".tweet__no-comments"));
-  console.log(ul);
+  if (ul.querySelector(".tweet__no-comments")) {
+    ul.removeChild(ul.querySelector(".tweet__no-comments"));
+  }
+
+  spinner.style.display = "none";
 }
 
 const commentTexts = document.querySelectorAll(".tweet__form > #comment-text");
-commentTexts.forEach((v) => v.addEventListener("change", changeCommentText));
+commentTexts.forEach((v) => v.addEventListener("keyup", changeCommentText));
 
 function changeCommentText({ target }) {
   const btn = target.parentNode.querySelector("button");
   console.log(target.value);
   if (target.value.trim().length > 0) {
     btn.removeAttribute("disabled");
-    console.log("Greater");
   } else {
     btn.setAttribute("disabled", "true");
-    console.log("Less");
   }
-  console.log(btn);
 }

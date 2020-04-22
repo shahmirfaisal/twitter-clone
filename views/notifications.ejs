@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("includes/head.ejs") %>
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/aside.css" />
+    <link rel="stylesheet" href="css/notifications.css" />
+  </head>
+  <body>
+    <main class="main">
+      <%- include("./includes/navbar.ejs") %>
+
+      <div class="notifications">
+        <header class="section-header">
+          <h2 class="section-header__heading">Notifications</h2>
+          <form action="/logout" method="POST">
+            <button class="section-header__logout">Logout</button>
+          </form>
+        </header>
+
+        <% if(notifications.length === 0) { %>
+        <p class="notifications__no">No notifications</p>
+        <% } else { %>
+
+        <ul class="notifications__container">
+          <% for(let notification of notifications) { %>
+          <li class="notification">
+            <a
+              href="/profile/<%= notification.user._id %>"
+              class="notification__img"
+            >
+              <img src="<%= notification.user.image %>" alt="Profile Image" />
+            </a>
+            <p class="notification__text">
+              <a
+                href="/profile/<%= notification.user._id %>"
+                class="notification__link"
+                ><%= notification.user.name %></a
+              >
+              <span><%= notification.text %> your </span>
+              <a
+                href="/tweet/<%= notification.tweetId %>"
+                class="notification__link"
+              >
+                tweet
+              </a>
+            </p>
+          </li>
+          <% } %>
+        </ul>
+
+        <% } %>
+      </div>
+
+      <%- include("includes/aside.ejs") %>
+    </main>
+  </body>
+</html>

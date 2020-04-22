@@ -17,6 +17,9 @@
       <div class="profile">
         <header class="section-header">
           <h2 class="section-header__heading"><%= user.name %></h2>
+          <form action="/logout" method="POST">
+            <button class="section-header__logout">Logout</button>
+          </form>
         </header>
 
         <header class="profile__header">
@@ -27,7 +30,8 @@
             href="/edit-profile"
             class="profile__btn <%= currentUser.email === user.email ? '' : 'hidden' %>"
           >
-            Edit Profile
+            <i class="fas fa-edit"></i>
+            <span> Edit Profile</span>
           </a>
         </header>
 

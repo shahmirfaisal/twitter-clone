@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/write-tweet.css" />
     <link rel="stylesheet" href="css/tweet.css" />
     <link rel="stylesheet" href="css/aside.css" />
+    <link rel="stylesheet" href="css/spinner.css" />
     <script src="js/tweet.js" defer></script>
     <script src="js/write-tweet.js" defer></script>
   </head>
@@ -17,6 +18,9 @@
       <div class="home">
         <header class="section-header">
           <h2 class="section-header__heading">Home</h2>
+          <form action="/logout" method="POST">
+            <button class="section-header__logout">Logout</button>
+          </form>
         </header>
 
         <%- include("includes/write-tweet.ejs") %>
@@ -27,7 +31,8 @@
         </section>
       </div>
 
-      <%- include("includes/aside.ejs") %>
+      <%- include("includes/spinner.ejs") %> <%- include("includes/aside.ejs")
+      %>
     </main>
   </body>
 </html>

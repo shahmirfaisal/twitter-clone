@@ -1,7 +1,7 @@
 .nav {
   position: fixed;
+  width: 27rem;
   height: 100vh;
-  width: 31rem;
   display: flex;
   justify-content: center;
   border-right: var(--border);
@@ -39,4 +39,38 @@
 }
 .nav__link.active {
   color: var(--primary-color);
+}
+
+@media (max-width: 780px) {
+  .nav {
+    width: 6rem;
+  }
+  .nav__logo {
+    margin: 0 0 1rem 0;
+  }
+  .nav__link {
+    padding: 1.3rem 0 1.3rem 0.6rem;
+  }
+  .nav__link > span {
+    display: none;
+  }
+  .nav__link > i {
+    margin-right: 0;
+  }
+  .nav__link:hover {
+    color: var(--primary-color);
+    background-color: transparent;
+  }
+}
+
+@media (max-width: 450px) {
+  .nav {
+    width: 5rem;
+  }
+  .nav__logo {
+    width: 3rem;
+  }
+  .nav__link {
+    font-size: 1.6rem;
+  }
 }

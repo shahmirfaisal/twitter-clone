@@ -36,7 +36,7 @@ module.exports = class User {
       const res = await db.collection("users").insertOne(this);
       return res.ops[0];
     } catch (err) {
-      console.log(err);
+      return Promise.reject(err);
     }
   }
 
@@ -47,7 +47,7 @@ module.exports = class User {
       console.log(user);
       return user;
     } catch (err) {
-      console.log(err);
+      return Promise.reject(err);
     }
   }
 
@@ -57,7 +57,7 @@ module.exports = class User {
       const user = await db.collection("users").find({ email }).next();
       return user;
     } catch (err) {
-      console.log(err);
+      return Promise.reject(err);
     }
   }
 
@@ -70,7 +70,7 @@ module.exports = class User {
         .next();
       return user;
     } catch (err) {
-      console.log(err);
+      return Promise.reject(err);
     }
   }
 
@@ -82,7 +82,7 @@ module.exports = class User {
         .updateOne({ _id: new mongodb.ObjectID(id) }, { $set: profile });
       return res;
     } catch (err) {
-      console.log(err);
+      return Promise.reject(err);
     }
   }
 };

@@ -8,27 +8,27 @@
             </li>
             <li class="nav__item">
               <a href="/" class="nav__link <%= path === '/' ? 'active' : '' %>"
-                ><i class="fas fa-home"></i> Home</a
+                ><i class="fas fa-home"></i> <span>Home</span></a
               >
             </li>
             <li class="nav__item">
               <a
                 href="/profile/<%= currentUser._id %>"
                 class="nav__link <%= path === '/profile/'+currentUser._id ? 'active' : '' %>"
-                ><i class="fas fa-user"></i> Profile</a
+                ><i class="fas fa-user"></i> <span>Profile</span></a
               >
             </li>
             <li class="nav__item">
               <a
                 href="/notifications"
                 class="nav__link <%= path === '/notifications' ? 'active' : '' %>"
-                ><i class="fas fa-bell"></i> Notifications</a
+                ><i class="fas fa-bell"></i> <span>Notifications</span></a
               >
             </li>
             <li class="nav__item">
               <form action="/logout" method="POST">
                 <button  class="nav__link"
-                ><i class="fas fa-sign-out-alt"></i> Log out</buton
+                ><i class="fas fa-sign-out-alt"></i> <span>Log out</span></buton
                 >
             </form>
             </li>

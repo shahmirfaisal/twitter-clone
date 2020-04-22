@@ -1,6 +1,6 @@
 const writeTweetBtn = document.querySelector(".write-tweet__btn");
 const writeTweetText = document.querySelector(".write-tweet__text");
-writeTweetText.addEventListener("change", changeWriteTweetText);
+writeTweetText.addEventListener("keyup", changeWriteTweetText);
 
 function changeWriteTweetText({ target: { value } }) {
   console.log(value);

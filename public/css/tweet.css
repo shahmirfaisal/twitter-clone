@@ -1,6 +1,6 @@
 .tweet {
   background-color: white;
-  padding: 2rem 2rem;
+  padding: 2rem var(--padding);
   border-bottom: var(--border);
   font-size: 1rem;
 }
@@ -12,10 +12,20 @@
 }
 .tweet__img {
   width: 5em;
+  height: 5em;
+  flex-shrink: 0;
 }
 .tweet__img > img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
   border-radius: 50%;
+}
+.tweet__names {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
 }
 .tweet__name {
   font-size: 1.7em;
@@ -29,7 +39,7 @@
 }
 .tweet__text {
   font-size: 1.6em;
-  margin-top: 1rem;
+  margin: 1.5rem 0;
   line-height: 1.5em;
 }
 .tweet__like {
@@ -64,7 +74,7 @@
 }
 .tweet__form {
   display: flex;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
 }
 .tweet__form > input {
   flex: 1;
@@ -95,5 +105,5 @@
 .comment {
   font-size: 0.85rem;
   border-top: var(--border);
-  padding: 1rem 2rem;
+  padding: 1rem var(--padding);
 }

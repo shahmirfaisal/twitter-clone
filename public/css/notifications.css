@@ -1,0 +1,37 @@
+.notifications__no {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-top: 3rem;
+  font-weight: 500;
+}
+
+.notifications__container {
+  list-style-type: none;
+}
+
+.notification {
+  display: flex;
+  align-items: center;
+  padding: 1rem var(--padding);
+  border-bottom: var(--border);
+}
+.notification__img {
+  width: 4rem;
+  height: 4rem;
+  flex-shrink: 0;
+}
+.notification__img > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 50%;
+}
+.notification__text {
+  font-size: 1.4rem;
+  margin-left: 2rem;
+  word-spacing: 0.2rem;
+}
+.notification__link {
+  color: var(--primary-color);
+}

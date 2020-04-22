@@ -16,6 +16,7 @@ html {
   --text-color: #14171a;
   --border: 0.3px solid rgb(223, 223, 223);
   --btn-hover: #1a90da;
+  --padding: 2rem;
 }
 body,
 input,
@@ -38,14 +39,48 @@ button {
 
 .main {
   display: grid;
-  grid-template-columns: 31rem 1fr 30rem;
+  grid-template-columns: 27rem 1fr 27rem;
+}
+@media (max-width: 1080px) {
+  .main {
+    grid-template-columns: 27rem 1fr;
+  }
+}
+
+@media (max-width: 780px) {
+  :root {
+    --padding: 1.4rem;
+  }
+  .main {
+    grid-template-columns: 6rem 1fr;
+  }
+}
+
+@media (max-width: 450px) {
+  :root {
+    --padding: 1.1rem;
+  }
+  .main {
+    grid-template-columns: 5rem 1fr;
+  }
 }
 
 .section-header {
-  padding: 1.5rem 2rem;
+  padding: 1.5rem var(--padding);
   background-color: white;
   border-bottom: var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .section-header__heading {
   font-size: 2.1rem;
+}
+.section-header__logout {
+  font-size: 1.5rem;
+  font-weight: 500;
+  background-color: transparent;
+}
+.section-header__logout:hover {
+  text-decoration: underline;
 }

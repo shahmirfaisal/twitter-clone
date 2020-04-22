@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("includes/head.ejs") %>
+    <link rel="stylesheet" href="/css/navbar.css" />
+    <link rel="stylesheet" href="/css/tweet.css" />
+    <link rel="stylesheet" href="/css/aside.css" />
+    <link rel="stylesheet" href="/css/spinner.css" />
+    <script src="/js/tweet.js" defer></script>
+  </head>
+  <body>
+    <main class="main">
+      <%- include("./includes/navbar.ejs") %>
+
+      <div class="home">
+        <header class="section-header">
+          <h2 class="section-header__heading">Tweet</h2>
+          <form action="/logout" method="POST">
+            <button class="section-header__logout">Logout</button>
+          </form>
+        </header>
+
+        <section class="tweet-container">
+          <%- include("includes/tweet.ejs") %>
+        </section>
+      </div>
+
+      <%- include("includes/spinner.ejs") %> <%- include("includes/aside.ejs")
+      %>
+    </main>
+  </body>
+</html>

@@ -4,8 +4,10 @@
       <div class="tweet__img">
         <img src="/<%= tweet.user.image %>" alt="Profile Image" />
       </div>
-      <h3 class="tweet__name"><%= tweet.user.name %></h3>
-      <h4 class="tweet__username">@<%= tweet.user.username %></h4>
+      <div class="tweet__names">
+        <h3 class="tweet__name"><%= tweet.user.name %></h3>
+        <h4 class="tweet__username">@<%= tweet.user.username %></h4>
+      </div>
     </a>
   </header>
 
@@ -21,6 +23,7 @@
       value="<%= JSON.stringify(tweet.likes) %>"
     />
     <input type="hidden" id="user-email" value="<%= currentUser.email %>" />
+    <input type="hidden" id="email" value="<%= tweet.user.email %>" />
     <button
       class="tweet__like-icon <%= tweet.likes.includes(currentUser.email) ? 'tweet__like-icon--liked' : '' %>"
     >
@@ -37,6 +40,7 @@
       id="comments-array"
       value="<%= JSON.stringify(tweet.comments) %>"
     />
+    <input type="hidden" id="email" value="<%= tweet.user.email %>" />
     <input
       type="text"
       placeholder="Enter comment..."
@@ -59,8 +63,10 @@
           <div class="tweet__img">
             <img src="/<%= comment.user.image %>" alt="Profile Image" />
           </div>
-          <h3 class="tweet__name"><%= comment.user.name %></h3>
-          <h4 class="tweet__username">@<%= comment.user.username %></h4>
+          <div class="tweet__names">
+            <h3 class="tweet__name"><%= comment.user.name %></h3>
+            <h4 class="tweet__username">@<%= comment.user.username %></h4>
+          </div>
         </a>
       </header>
 
