@@ -9,6 +9,10 @@ const userRouter = require("./routes/user");
 const tweetRouter = require("./routes/tweet");
 const notificationRouter = require("./routes/notification");
 const errorController = require("./controllers/error");
+const helmet = require("helmet");
+const compression = require("compression");
+const morgan = require("morgan");
+const fs = require("fs");
 
 const app = express();
 
@@ -30,6 +34,14 @@ const storage = multer.diskStorage({
   },
 });
 
+const loggingStream = fs.createWriteStream(
+  path.join(__dirname, "request.log"),
+  { flags: "a" }
+);
+
+app.use(helmet());
+app.use(compression());
+app.use(morgan("combined", { stream: loggingStream }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "public")));
@@ -56,5 +68,5 @@ app.use(errorController.get404);
 app.use(errorController.get500);
 
 mongoConnect(() => {
-  app.listen(3000);
+  app.listen(process.env.PORT || 3000);
 });

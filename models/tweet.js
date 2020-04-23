@@ -7,14 +7,6 @@ module.exports = class Tweet {
     this.user = user;
     this.likes = [];
     this.comments = [];
-
-    // Structure of Comment
-    // this.comments = [
-    //   {
-    //     user: {},
-    //     comment: "",
-    //   },
-    // ];
   }
 
   async save() {

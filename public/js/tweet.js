@@ -1,5 +1,4 @@
 const toggleComments = document.querySelectorAll(".tweet__toggle-comments");
-console.log(toggleComments);
 toggleComments.forEach((toggleComment) =>
   toggleComment.addEventListener("click", toggleCommentHandler)
 );
@@ -120,7 +119,7 @@ commentTexts.forEach((v) => v.addEventListener("keyup", changeCommentText));
 
 function changeCommentText({ target }) {
   const btn = target.parentNode.querySelector("button");
-  console.log(target.value);
+
   if (target.value.trim().length > 0) {
     btn.removeAttribute("disabled");
   } else {
