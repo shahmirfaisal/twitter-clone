@@ -20,6 +20,8 @@ exports.getSignup = (req, res, next) => {
 exports.postSignup = async (req, res, next) => {
   const { name, username, email, password } = req.body;
 
+  if (req.session.isLogin) return res.redirect("/");
+
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
@@ -61,6 +63,8 @@ exports.getLogin = (req, res, next) => {
 
 exports.postLogin = async (req, res, next) => {
   const { username_email } = req.body;
+
+  if (req.session.isLogin) return res.redirect("/");
 
   const errors = validationResult(req);
 
@@ -113,6 +117,8 @@ exports.getEditProfile = (req, res, next) => {
 
 exports.postEditProfile = async (req, res, next) => {
   const updatedProfile = { ...req.session.user };
+
+  if (!req.session.isLogin) return res.redirect("/signup");
 
   for (let key in req.body) {
     if (req.body[key].trim().length > 0) {

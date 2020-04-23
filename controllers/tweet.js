@@ -22,6 +22,8 @@ exports.getHome = async (req, res, next) => {
 exports.postTweet = async (req, res, next) => {
   const { tweet } = req.body;
 
+  if (!req.session.isLogin) return res.redirect("/signup");
+
   try {
     const newTweet = new Tweet(tweet, req.session.user);
     await newTweet.save();
