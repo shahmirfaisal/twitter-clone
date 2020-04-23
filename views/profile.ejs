@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/css/tweet.css" />
     <link rel="stylesheet" href="/css/aside.css" />
     <link rel="stylesheet" href="/css/profile.css" />
+    <link rel="stylesheet" href="/css/spinner.css" />
     <script src="/js/tweet.js" defer></script>
     <script src="/js/write-tweet.js" defer></script>
   </head>
@@ -64,13 +65,18 @@
           </h3>
         </header>
 
+        <% if(tweets.length === 0) { %>
+        <p class="profile__no-tweets">No tweets</p>
+        <% } else { %>
         <section class="tweet-container">
           <% for(let tweet of tweets) { %> <%- include("includes/tweet.ejs", {
           tweet }) %> <% } %>
         </section>
+        <% } %>
       </div>
 
-      <%- include("includes/aside.ejs") %>
+      <%- include("includes/spinner.ejs") %> <%- include("includes/aside.ejs")
+      %>
     </main>
   </body>
 </html>

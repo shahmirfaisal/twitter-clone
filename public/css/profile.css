@@ -86,6 +86,14 @@
   font-weight: 600;
 }
 
+.profile__no-tweets {
+  font-size: 1.8rem;
+  font-weight: 500;
+  text-align: center;
+  background-color: #fff;
+  padding-top: 3rem;
+}
+
 @media (max-width: 780px) {
   .profile__btn {
     font-size: 2rem;

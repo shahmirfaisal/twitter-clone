@@ -44,7 +44,6 @@ module.exports = class User {
     const db = getDb();
     try {
       const user = await db.collection("users").find({ username }).next();
-      console.log(user);
       return user;
     } catch (err) {
       return Promise.reject(err);

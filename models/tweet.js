@@ -86,8 +86,12 @@ module.exports = class Tweet {
         { "comments.user.email": user.email },
         {
           $set: {
-            "comments.$[].user": user,
+            "comments.$[element].user": user,
           },
+        },
+        {
+          multi: true,
+          arrayFilters: [{ "element.user.email": user.email }],
         }
       );
 
