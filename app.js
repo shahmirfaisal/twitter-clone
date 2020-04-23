@@ -21,8 +21,7 @@ app.set("views", "views");
 
 const sessionStore = new MongoSession({
   collection: "sessions",
-  uri:
-    "mongodb+srv://shahmir:programmingchola@cluster0-3jbwc.mongodb.net/twitter-clone?retryWrites=true&w=majority",
+  uri: process.env.MONGO_URI,
 });
 
 const storage = multer.diskStorage({
