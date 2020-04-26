@@ -24,6 +24,18 @@ const sessionStore = new MongoSession({
   uri: process.env.MONGO_URI,
 });
 
+const fileFilter = (req, file, cb) => {
+  switch (file.mimetype) {
+    case "image/png":
+    case "image/jpg":
+    case "image/jpeg":
+      cb(null, true);
+      break;
+    default:
+      cb(null, false);
+  }
+};
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "profileImages");
@@ -48,7 +60,7 @@ app.use(
   "/profileImages",
   express.static(path.join(__dirname, "profileImages"))
 );
-app.use(multer({ storage }).single("image"));
+app.use(multer({ storage, fileFilter }).single("image"));
 app.use(
   session({
     secret: "Secret",
