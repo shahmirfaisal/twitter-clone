@@ -87,5 +87,5 @@ app.use(errorController.get404);
 app.use(errorController.get500);
 
 mongoConnect(() => {
-  app.listen(3000);
+  app.listen(process.env.PORT || 3000);
 });
