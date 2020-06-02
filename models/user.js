@@ -27,7 +27,8 @@ module.exports = class User {
     this.website = "Unknown";
     this.joined =
       months[new Date().getMonth()] + " " + new Date().getFullYear();
-    this.image = "images/profile-img.jpg";
+    this.image =
+      "https://res.cloudinary.com/dw3ap99ie/image/upload/v1590679237/1589133680691-profile-img_bgii9i.jpg";
   }
 
   async save() {

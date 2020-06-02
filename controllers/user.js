@@ -1,7 +1,8 @@
-const { validationResult } = require("express-validator/check");
+const { validationResult } = require("express-validator");
 const User = require("../models/user");
 const Tweet = require("../models/tweet");
 const Notification = require("../models/notification");
+const cloudinary = require("cloudinary").v2;
 
 exports.getSignup = (req, res, next) => {
   if (req.session.isLogin) return res.redirect("/");
@@ -125,9 +126,13 @@ exports.postEditProfile = async (req, res, next) => {
       updatedProfile[key] = req.body[key];
     }
   }
-  if (req.file) updatedProfile.image = req.file.path;
 
   try {
+    if (req.file) {
+      const cloudResult = await cloudinary.uploader.upload(req.file.path);
+      updatedProfile.image = cloudResult.url;
+    }
+
     const result = await User.updateProfile(
       req.session.user._id,
       updatedProfile

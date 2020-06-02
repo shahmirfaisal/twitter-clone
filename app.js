@@ -13,11 +13,19 @@ const helmet = require("helmet");
 const compression = require("compression");
 const morgan = require("morgan");
 const fs = require("fs");
+const cloudinary = require("cloudinary").v2;
+require("dotenv").config();
 
 const app = express();
 
 app.set("view engine", "ejs");
 app.set("views", "views");
+
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET,
+});
 
 const sessionStore = new MongoSession({
   collection: "sessions",
@@ -63,7 +71,7 @@ app.use(
 app.use(multer({ storage, fileFilter }).single("image"));
 app.use(
   session({
-    secret: "Secret",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     store: sessionStore,
@@ -79,5 +87,5 @@ app.use(errorController.get404);
 app.use(errorController.get500);
 
 mongoConnect(() => {
-  app.listen(process.env.PORT || 3000);
+  app.listen(3000);
 });

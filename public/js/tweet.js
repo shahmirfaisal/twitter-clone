@@ -94,7 +94,7 @@ async function addComment() {
   <header class="tweet__header">
     <a href="/profile/${comment.user._id}" class="tweet__profile-link">
       <div class="tweet__img">
-        <img src="/${comment.user.image}" alt="Profile Image" />
+        <img src="${comment.user.image}" alt="Profile Image" />
       </div>
       <h3 class="tweet__name">${comment.user.name}</h3>
       <h4 class="tweet__username">@${comment.user.username}</h4>
